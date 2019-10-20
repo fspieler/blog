@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="fred,spieler,blog"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Fred Spieler's personal blog">
+    <meta name="author" content="Fred Spieler">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>{{ title }}</title>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div id="top" style="visibility:hidden"/>
+
+      <div class="blog-masthead">
+        <div class="container">
+          <nav class="blog-nav">
+            <br/>
+          <!--
+            <a class="blog-nav-item active" href="#">Latest</a>
+            <a class="blog-nav-item" href="#">By PostDate</a>
+            <a class="blog-nav-item" href="#">By Subject</a>
+          -->
+          </nav>
+        </div>
+      </div>
+
+      <div class="container">
+
+        <div id="name-logo">
+          <div id="name-logo-color">
+            <a href="/">
+              <img id="name-img" src="/img/name_logo_grid_transparent.png"/>
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-8 blog-main">
+            {{ content }}
+          </div>
+
+          <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+              <div>
+                <img width="100vw" src="/img/fred_logo.png" style="margin:auto;display:block"/>
+              </div>
+              <h4>About</h4>
+              <p>Software developer employed by Bloomberg LP in NYC, USA</p>
+              <p>Personal blog, opinions are my own, etc.</p>
+              <p>I don't have a beard at the moment:</p>
+              <ol class="list-unstyled">
+                <li><a href="https://github.com/fspieler">Github</a></li>
+                <li><a href="https://twitter.com/fspieler">Twitter</a></li>
+                <li><a href="https://linkedin.com/in/fredspieler">LinkedIn</a></li>
+              </ol>
+              <p>This site uses free and open source software, view <a href="/credits">the credits</a> for more info.</p>
+            </div>
+          </div><!-- /.blog-sidebar -->
+
+        </div><!-- /.row -->
+
+      </div><!-- /.container -->
+      <footer class="blog-footer">
+        <p>
+          &copy;2017-2018 Frederic Spieler
+        </p>
+        <p>
+          <a href="#">Back to top</a>
+        </p>
+      </footer>
+    </div><!-- /. -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Latest compiled and minified CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link href="/css/blog.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
+    <script type="text/javascript">
+$(document).ready(function(){
+  $("div#top").css("visibility", "visible");
+});
+    </script>
+    <script src="/js/page_loader.js"></script>
+    <script src="/js/color.js"></script>
+    <script src="/js/navbar.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!--
+    <!- IE10 viewport hack for Surface/desktop Windows 8 bug ->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!- IE10 viewport hack for Surface/desktop Windows 8 bug ->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    -->
+
+  </body>
+</html>
