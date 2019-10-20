@@ -3,8 +3,6 @@ import os
 
 from blog.page_converter import PageConverter
 
-
-
 def main():
     shutil.rmtree('public', ignore_errors=True)
     os.makedirs('public')

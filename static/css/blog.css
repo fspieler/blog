@@ -2,6 +2,10 @@
  * Globals
  */
 
+div#name-logo-color {
+    background-color: #428bca;
+}
+
 body {
     font-family: Georgia, "Times New Roman", Times, serif;
     color: #555;

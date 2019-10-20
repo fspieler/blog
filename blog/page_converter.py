@@ -59,9 +59,9 @@ class PageConverter(object):
             jinja_input['subtitle'] = meta['subtitle'][0]
         content_html = self.post_template.render(**jinja_input)
         del jinja_input['body']
+        jinja_input['title'] += ' - fredspieler.com'
         jinja_input['content'] = content_html
         full_page_html = self.base_template.render(jinja_input)
-        print(full_page_html)
         return (content_html, full_page_html)
 
     def convert(self):
