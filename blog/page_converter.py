@@ -47,35 +47,58 @@ class PageConverter(object):
     def apply_template(self, **kwargs):
         pass
 
-    def _transform(self, md_text):
+    def _transform(self, md_text, output_path, permalink):
         md_html = self.md.convert(md_text)
         meta = self.md.Meta
+        if output_path.startswith('public/'):
+            output_path = output_path[7:]
         jinja_input = {
             'title' : meta['title'][0],
-            'date' : meta['date'][0],
-            'body' : md_html
+            'body' : md_html,
+            'path' : output_path,
+            'permalink' : permalink
         }
+        if 'date' in meta:
+            jinja_input['date'] = meta['date'][0]
+        if 'tags' in meta:
+            jinja_input['tags'] = meta['tags'][0].split(', ')
         if 'subtitle' in meta:
             jinja_input['subtitle'] = meta['subtitle'][0]
         content_html = self.post_template.render(**jinja_input)
-        del jinja_input['body']
         jinja_input['title'] += ' - fredspieler.com'
         jinja_input['content'] = content_html
         full_page_html = self.base_template.render(jinja_input)
-        return (content_html, full_page_html)
+        return (content_html, full_page_html, meta)
 
-    def convert(self):
+    def convert(self, tags_generator=None, index_generator=None, permalink=True):
         with open(self.input_path, 'r') as f:
             input_md = f.read()
-        content_html, full_page_html = self._transform(input_md)
-
-        os.makedirs(os.path.dirname(self.output_dir), exist_ok=True)
-        file_base = os.path.basename(self.input_path)
+        file_base = os.path.basename(self.input_path).replace('.md','')
         output_path = f'{self.output_dir}/{file_base}'
-        with open(f'{output_path}.raw.html','w') as f:
+
+        content_html, full_page_html, meta = self._transform(
+            input_md,
+            output_path,
+            permalink
+        )
+
+        if tags_generator and 'tags' in meta:
+            for tag in meta['tags'][0].split(', '):
+                tags_generator[tag].append(
+                    path=output_path,
+                    meta=meta,
+                    content=content_html
+                )
+
+        if index_generator:
+            index_generator.append(
+                meta=meta,
+                path=output_path,
+                content=content_html
+            )
+
+        os.makedirs(output_path, exist_ok=True)
+        with open(f'{output_path}/content.html','w') as f:
             f.write(content_html)
-        with open(f'{output_path}.html','w') as f:
+        with open(f'{output_path}/index.html','w') as f:
             f.write(full_page_html)
-
-
-
