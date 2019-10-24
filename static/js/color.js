@@ -1,53 +1,50 @@
+let backgroundElements = [
+    "div#name-logo-color",
+    "div.blog-masthead",
+];
+let foregroundElements = [
+    "a",
+];
+let $backgroundElements = backgroundElements.map(x => $(x));
+let $foregroundElements = foregroundElements.map(x => $(x));
 
-function change_background_color(element, color, time, cb) {
-    $(element).animate(
-        {"background-color":color},
-        {
-            "duration":time,
-            "done":cb
-        }
-    );
-}
-function change_foreground_color(element, color, time) {
-    $(element).animate(
-        {"color":color},
-        {
-            "duration":time
-        }
-    );
-}
 
-function transitionElementColors() {
-    let background_elements = [
-        "div#name-logo-color",
-        "div.blog-masthead",
-    ];
-    let foreground_elements = [
-        "a",
-    ]
-    let colors = [
-        "#428bca",
-        "#860eb9",
-        "#f50009",
-        "#ff8900",
-        "#f50009",
-        "#860eb9"
-    ];
-    let index = 0;
-    let delay = 50000;
-    (function colorFunction() {
-        index++;
-        index %= colors.length;
-        let color = colors[index];
-        //the first one has a callback to make everything loop forever
-        change_background_color(background_elements[0], color, delay, colorFunction);
-        for(var i = 1; i < background_elements.length; i++){
-            change_background_color(background_elements[i], color, delay);
-        }
-        for(var i = 0; i < foreground_elements.length; i++){
-            change_foreground_color(foreground_elements[i], color, delay);
-        }
-    })();
-}
 
-transitionElementColors();
+let colorCycle = (function () {
+    let starting = Math.floor(Math.random() * 628)/100.0;
+    let sep = 2.094; // 2*pi/3: space out three colors
+    let idx = starting; // green = red + sep, blue = green + sep
+    console.log(`Random  starting index: ${starting}`);
+    function colorCycleImpl(increment){
+        if(increment){
+            idx += .01;
+        }
+        if(idx > 6.3){
+            idx = 0;
+        }
+        let red = Math.floor(127+127*Math.sin(idx)).toString(16).padStart(2,'0');
+        let green = Math.floor(127+127*Math.sin(idx+sep)).toString(16).padStart(2,'0');
+        let blue = Math.floor(127+127*Math.sin(idx+sep+sep)).toString(16).padStart(2,'0');
+        let color = '#'+red+green+blue;
+
+        for(var i = 0; i < backgroundElements.length; i++){
+            $backgroundElements[i].css("background-color", color);
+        }
+        for(var i = 0; i < foregroundElements.length; i++){
+            $foregroundElements[i].css("color", color);
+        }
+
+    }
+
+    colorCycleImpl();
+    setInterval(function(){colorCycleImpl(true)}, 200)
+    return function(){colorCycleImpl(false)};
+})();
+
+export default function updateElements(){
+    $backgroundElements = backgroundElements.map(x => $(x))
+    $foregroundElements = foregroundElements.map(x => $(x))
+    colorCycle();
+}
+updateElements();
+
