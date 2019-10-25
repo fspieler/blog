@@ -31,7 +31,7 @@ class TagsGenerator(object):
         for tag, val in self.tags.items():
             tagdir = f'public/tag/{tag}'
             os.makedirs(tagdir, exist_ok=True)
-            title = f'tag: {tag} - fredspieler.com'
+            title = f'tag: {tag}'
             tag_html = self.tag_template.render(
                 title=title,
                 posts=val.posts

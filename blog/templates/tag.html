@@ -5,11 +5,11 @@
 {% for post in posts %}
     <li>
         <a href="/{{ post.path | replace('public/','') }}">
-        {{ post.meta.title[0] }}
+        {{ post.meta.title }}
         {% if post.meta.subtitle is defined -%}
-        ({{ post.meta.subtitle[0] }})
+        ({{ post.meta.subtitle }})
         {%- endif -%}
-        </a> - {{ post.meta.date[0] }}
+        </a> - {{ post.meta.date }}
 {% endfor %}
 </ul>
 </div>

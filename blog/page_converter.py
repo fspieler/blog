@@ -47,25 +47,34 @@ class PageConverter(object):
     def apply_template(self, **kwargs):
         pass
 
+    @staticmethod
+    def meta_list_convert(meta_dict):
+        ret = {}
+        for k, v in meta_dict.items():
+            if isinstance(v, list):
+                v = v[0]
+            ret[k] = v
+        return ret
+
     def _transform(self, md_text, output_path, permalink):
         md_html = self.md.convert(md_text)
-        meta = self.md.Meta
+        meta = self.meta_list_convert(self.md.Meta)
+        print(meta)
         if output_path.startswith('public/'):
             output_path = output_path[7:]
         jinja_input = {
-            'title' : meta['title'][0],
+            'title' : meta['title'],
             'body' : md_html,
             'path' : output_path,
             'permalink' : permalink
         }
         if 'date' in meta:
-            jinja_input['date'] = meta['date'][0]
+            jinja_input['date'] = meta['date']
         if 'tags' in meta:
-            jinja_input['tags'] = meta['tags'][0].split(', ')
+            jinja_input['tags'] = meta['tags'].split(', ')
         if 'subtitle' in meta:
-            jinja_input['subtitle'] = meta['subtitle'][0]
+            jinja_input['subtitle'] = meta['subtitle']
         content_html = self.post_template.render(**jinja_input)
-        jinja_input['title'] += ' - fredspieler.com'
         jinja_input['content'] = content_html
         full_page_html = self.base_template.render(jinja_input)
         return (content_html, full_page_html, meta)
@@ -83,7 +92,7 @@ class PageConverter(object):
         )
 
         if tags_generator and 'tags' in meta:
-            for tag in meta['tags'][0].split(', '):
+            for tag in meta['tags'].split(', '):
                 tags_generator[tag].append(
                     path=output_path,
                     meta=meta,
