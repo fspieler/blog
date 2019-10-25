@@ -31,12 +31,13 @@ class TagsGenerator(object):
         for tag, val in self.tags.items():
             tagdir = f'public/tag/{tag}'
             os.makedirs(tagdir, exist_ok=True)
+            title = f'tag: {tag} - fredspieler.com'
             tag_html = self.tag_template.render(
-                title=f'tag: {tag}',
+                title=title,
                 posts=val.posts
             )
             page_html = self.page_template.render(
-                title=f'tag: {tag}',
+                title=title,
                 content=tag_html
             )
             with open(f'{tagdir}/content.html','w') as f:
