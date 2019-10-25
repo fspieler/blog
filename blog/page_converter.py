@@ -50,7 +50,7 @@ class PageConverter(object):
     @staticmethod
     def meta_list_convert(meta_dict):
         ret = {}
-        for k, v in meta_dict:
+        for k, v in meta_dict.items():
             if isinstance(v, list):
                 v = v[0]
             ret[k] = v
@@ -58,7 +58,7 @@ class PageConverter(object):
 
     def _transform(self, md_text, output_path, permalink):
         md_html = self.md.convert(md_text)
-        meta = meta_list_convert(self.md.Meta)
+        meta = self.meta_list_convert(self.md.Meta)
         if output_path.startswith('public/'):
             output_path = output_path[7:]
         jinja_input = {
