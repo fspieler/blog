@@ -31,6 +31,7 @@ function updatePage(data){
         $("div.blog-main").append(data);
         interceptLinks();
         updateElements();
+        document.title = $(".blog-post-title").text() + ' - fredspieler.com';
         $("div.blog-main").fadeIn();
     });
 }
