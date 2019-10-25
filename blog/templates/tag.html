@@ -3,7 +3,7 @@
 
 <ul>
 {% for post in posts %}
-    <li> <p class="blog-post">
+    <li>
         <a href="/{{ post.path | replace('public/','') }}">
         {{ post.meta.title[0] }}
         {% if post.meta.subtitle is defined -%}
