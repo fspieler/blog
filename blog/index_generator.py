@@ -6,7 +6,7 @@ class IndexGenerator(object):
         self.posts = {}
         self.max = -1
     def append(self, **kwargs):
-        order = int(kwargs['meta']['order'][0])
+        order = int(kwargs['meta']['order'])
         self.posts[order] = kwargs
         self.max = max(self.max, order)
     def write_home_index(self):
