@@ -41,6 +41,8 @@ class PageConverter(object):
         self.jinja_environment = Environment(
             loader=PackageLoader('blog', 'templates'),
         )
+        self.links = []
+        self.links_template = self.jinja_environment.get_template('link_wrapper.html')
         self.post_template = self.jinja_environment.get_template('post.html')
         self.base_template = self.jinja_environment.get_template('base.html')
 
@@ -75,39 +77,51 @@ class PageConverter(object):
         if 'subtitle' in meta:
             jinja_input['subtitle'] = meta['subtitle']
         content_html = self.post_template.render(**jinja_input)
-        jinja_input['content'] = content_html
-        full_page_html = self.base_template.render(jinja_input)
-        return (content_html, full_page_html, meta)
+        self.jinja_input = jinja_input
+        return (content_html, meta)
 
-    def convert(self, tags_generator=None, index_generator=None, permalink=True):
+    def parse(self, tags_generator=None, index_generator=None, permalink=True, links=None):
         with open(self.input_path, 'r') as f:
             input_md = f.read()
         file_base = os.path.basename(self.input_path).replace('.md','')
-        output_path = f'{self.output_dir}/{file_base}'
+        self.output_path = f'{self.output_dir}/{file_base}'
 
-        content_html, full_page_html, meta = self._transform(
+        self.content_html, meta = self._transform(
             input_md,
-            output_path,
+            self.output_path,
             permalink
         )
-
         if tags_generator and 'tags' in meta:
             for tag in meta['tags'].split(', '):
                 tags_generator[tag].append(
-                    path=output_path,
+                    path=self.output_path,
                     meta=meta,
-                    content=content_html
+                    content=self.content_html
                 )
 
         if index_generator:
             index_generator.append(
                 meta=meta,
-                path=output_path,
-                content=content_html
+                page_converter=self,
+                path=self.output_path,
+                content=self.content_html
             )
+        return self
 
-        os.makedirs(output_path, exist_ok=True)
-        with open(f'{output_path}/content.html','w') as f:
-            f.write(content_html)
-        with open(f'{output_path}/index.html','w') as f:
+    def update_links(self, links):
+        self.links = links
+
+    def write(self):
+        self.content_html = self.links_template.render(
+            links=self.links,
+            content=self.content_html
+        )
+        self.jinja_input['content'] = self.content_html
+
+        full_page_html = self.base_template.render(self.jinja_input)
+
+        os.makedirs(self.output_path, exist_ok=True)
+        with open(f'{self.output_path}/content.html','w') as f:
+            f.write(self.content_html)
+        with open(f'{self.output_path}/index.html','w') as f:
             f.write(full_page_html)

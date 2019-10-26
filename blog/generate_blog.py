@@ -15,16 +15,20 @@ def copy_static():
     shutil.copytree('static/img','public/img')
     shutil.copytree('static/js','public/js')
     shutil.copy2('static/img/favicon.ico','public/favicon.ico')
-    PageConverter('errors/404.md','public').convert(permalink=False)
-    PageConverter('errors/50x.md','public').convert(permalink=False)
+    PageConverter('errors/404.md','public').parse(permalink=False).write()
+    PageConverter('errors/50x.md','public').parse(permalink=False).write()
 
 def generate_blog_content(tags_generator, index_generator):
     files = glob.glob('content/*.md')
+    ret = []
     for f in files:
-        PageConverter(f, 'public').convert(
-            tags_generator=tags_generator,
-            index_generator=index_generator
+        ret.append(
+            PageConverter(f, 'public').parse(
+                tags_generator=tags_generator,
+                index_generator=index_generator
+            )
         )
+    return ret
 
 
 def main():
@@ -34,8 +38,12 @@ def main():
     tags_generator = TagsGenerator()
     index_generator = IndexGenerator()
 
-    generate_blog_content(tags_generator, index_generator)
+    posts = generate_blog_content(tags_generator, index_generator)
+    index_generator.sort_posts()
     index_generator.write_home_index()
+    index_generator.update_links()
     tags_generator.write_tags_pages()
+    for post in posts:
+        post.write()
     print(tags_generator.tags.keys())
 

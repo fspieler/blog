@@ -5,27 +5,27 @@ function uniqueID () {
 
 let last_page_load_request = -1;
 function loadPage (name, withHistory) {
-    if(true === withHistory){
-        let nameWithoutContent = name.replace('content.html','')
-        history.pushState(
-            {
-                name: name
-            },
-            '',
-            nameWithoutContent
-        );
-    }
     let uid = uniqueID();
     last_page_load_request = uid;
     $.get(name, function( data ){
+        if(true === withHistory){
+            let nameWithoutContent = name.replace('content.html','')
+            history.pushState(
+                {
+                    name: name
+                },
+                '',
+                nameWithoutContent
+            );
+        }
         if(uid == last_page_load_request){
             updatePage(data);
         }
-    });
+    })
 }
 
 function updatePage(data){
-    $("div.blog-post").fadeOut(function(){
+    $("div.blog-main").fadeOut(function(){
         $("div.blog-main").empty();
         $("div.blog-main").toggle()
         $("div.blog-main").append(data);
