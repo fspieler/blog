@@ -8,7 +8,7 @@
 {{ content }}
 <span>
     {% for link in links %}
-    <a href="{{ link.value }}">
+    <a href="{{ link.value }}/#">
     {{ link.label }}
     </a>{% if not loop.last %} · {% endif %}
     {% endfor %}
