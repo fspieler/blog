@@ -2,6 +2,10 @@
  * Globals
  */
 
+img {
+    max-width: 100%;
+}
+
 html {
     overflow-y: scroll;
 }
