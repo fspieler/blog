@@ -3,7 +3,10 @@ let backgroundElements = [
     "div.blog-masthead",
 ];
 let foregroundElements = [
+    "a code",
     "a",
+    "h3.colors",
+    "p.colors strong",
 ];
 let $backgroundElements = backgroundElements.map(x => $(x));
 let $foregroundElements = foregroundElements.map(x => $(x));
@@ -22,10 +25,10 @@ let colorCycle = (function () {
         if(idx > 6.3){
             idx = 0;
         }
-        let red = Math.floor(127+127*Math.sin(idx)).toString(16).padStart(2,'0');
+        let blue = Math.floor(127+127*Math.sin(idx)).toString(16).padStart(2,'0');
         let green = Math.floor(127+127*Math.sin(idx+sep)).toString(16).padStart(2,'0');
-        let blue = Math.floor(127+127*Math.sin(idx+sep+sep)).toString(16).padStart(2,'0');
-        let color = '#'+red+green+blue;
+        let red = Math.floor(127+127*Math.sin(idx+sep+sep)).toString(16).padStart(2,'0');
+        let color = `#${red}${green}${blue}`;
 
         for(var i = 0; i < backgroundElements.length; i++){
             $backgroundElements[i].css("background-color", color);
@@ -37,7 +40,7 @@ let colorCycle = (function () {
     }
 
     colorCycleImpl();
-    setInterval(function(){colorCycleImpl(true)}, 200)
+    setInterval(function(){colorCycleImpl(true)}, 200);
     return function(){colorCycleImpl(false)};
 })();
 
