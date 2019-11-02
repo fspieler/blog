@@ -19,23 +19,36 @@ class IndexGenerator(object):
         for idx, post in enumerate(self.posts):
             links = []
             if idx > 0:
-                links.append({
-                    'value': self.posts[0]['path'].replace('public',''),
-                    'label': 'latest'
-                })
-                links.append({
-                    'value': self.posts[idx-1]['path'].replace('public',''),
-                    'label': 'next'
-                })
+                next_value = self.posts[idx-1]['path'].replace('public','')
+            else:
+                next_value = ''
+            links.append({
+                'value': self.posts[0]['path'].replace('public',''),
+                'label': 'latest',
+                'active': idx > 0
+            })
+            links.append({
+                'value': next_value,
+                'label': 'next',
+                'active': idx > 0
+            })
             if idx < last_idx:
-                links.append({
-                    'value': self.posts[idx+1]['path'].replace('public',''),
-                    'label': 'previous'
-                })
-                links.append({
-                    'value': self.posts[last_idx]['path'].replace('public',''),
-                    'label': 'oldest'
-                })
+                previous_value = self.posts[idx+1]['path'].replace('public','')
+                oldest_value = self.posts[last_idx]['path'].replace('public','')
+            else:
+                previous_value = ''
+                oldest_value = ''
+            links.append({
+                'value': previous_value,
+                'label': 'previous',
+                'active': idx < last_idx
+            })
+            links.append({
+                'value': oldest_value,
+                'label': 'oldest',
+                'active': idx < last_idx
+
+            })
             print(links)
             post['page_converter'].update_links(links)
 
