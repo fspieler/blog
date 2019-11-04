@@ -10,14 +10,7 @@ function loadPage (name, withHistory, anchor) {
     $.get(name, function( data ){
         if(uid === last_page_load_request){
             if(true === withHistory){
-                let nameWithoutContent = name.replace('content.html','')
-                history.pushState(
-                    {
-                        name: name
-                    },
-                    '',
-                    nameWithoutContent
-                );
+                pushHistory(name);
             }
             if(anchor === '#'){
                 window.location.href = '#';
@@ -26,6 +19,17 @@ function loadPage (name, withHistory, anchor) {
             updatePage(data, anchor);
         }
     })
+}
+
+function pushHistory(name){
+    let nameWithoutContent = name.replace('content.html','')
+    history.pushState(
+        {
+            name: name
+        },
+        '',
+        nameWithoutContent
+    );
 }
 
 function updatePage(data, anchor){
@@ -47,6 +51,9 @@ function updatePage(data, anchor){
 window.addEventListener('popstate', function(event){
     if(event.state && event.state.name){
         loadPage(event.state.name, false);
+    } else {
+        let newUrl = new URL(window.location);
+        loadPage(`${newUrl.pathname}content.html${newUrl.search}`, false);
     }
 });
 
