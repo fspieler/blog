@@ -5,20 +5,26 @@ function uniqueID () {
 
 let last_page_load_request = -1;
 function loadPage (name, withHistory, anchor) {
-    let uid = uniqueID();
-    last_page_load_request = uid;
-    $.get(name, function( data ){
-        if(uid === last_page_load_request){
-            if(true === withHistory){
-                pushHistory(name);
+    let current_page = window.location.pathname;
+    if(
+        !name.startsWith(current_page)
+        || (current_page == '/' && name !== '/content.html')
+    ){
+        let uid = uniqueID();
+        last_page_load_request = uid;
+        $.get(name, function( data ){
+            if(uid === last_page_load_request){
+                if(true === withHistory){
+                    pushHistory(name);
+                }
+                updatePage(name, data, anchor);
             }
-            if(anchor === '#'){
-                window.location.href = '#';
-                anchor = undefined;
-            }
-            updatePage(data, anchor);
+        })
+    } else {
+        if(anchor){
+            window.location.href = anchor;
         }
-    })
+    }
 }
 
 function pushHistory(name){
@@ -32,7 +38,7 @@ function pushHistory(name){
     );
 }
 
-function updatePage(data, anchor){
+function updatePage(name, data, anchor){
     $("div.blog-main").fadeOut(function(){
         $("div.blog-main").empty();
         $("div.blog-main").toggle()
@@ -41,10 +47,10 @@ function updatePage(data, anchor){
         updateElements();
         let title = $(".blog-post-title").text() + ' - fredspieler.com';
         document.title = title;
+        $("div.blog-main").fadeIn();
         if(anchor){
             window.location.href = anchor;
         }
-        $("div.blog-main").fadeIn();
     });
 }
 
