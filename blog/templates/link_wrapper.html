@@ -13,7 +13,7 @@
 <span>
     {% for link in links %}
     {% if link.active %}
-    <a href="{{ link.value }}">
+    <a href="{{ link.value }}#">
     {{ link.label }}
     </a>{% if not loop.last %} · {% endif %}
     {% else %}
