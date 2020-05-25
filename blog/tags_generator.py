@@ -34,7 +34,7 @@ class TagsGenerator(object):
             title = f'tag: {tag}'
             tag_html = self.tag_template.render(
                 title=title,
-                posts=val.posts
+                posts=reversed(val.posts)
             )
             page_html = self.page_template.render(
                 title=title,
