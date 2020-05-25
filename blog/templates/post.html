@@ -11,7 +11,7 @@
         {% if tags is defined %}
             · tags:
             {% for tag in tags %}
-            <a href="/tag/{{ tag }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
+            <a href="/tag/{{ tag }}/">{{ tag }}</a>{% if not loop.last %},{% endif %}
             {% endfor %}
         {% endif %}
     </p>
