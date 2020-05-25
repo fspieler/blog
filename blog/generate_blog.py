@@ -14,6 +14,7 @@ def copy_static():
     shutil.copytree('static/css','public/css')
     shutil.copytree('static/img','public/img')
     shutil.copytree('static/js','public/js')
+    shutil.copy2('static/robots.txt', 'public/robots.txt')
     shutil.copy2('static/img/favicon.ico','public/favicon.ico')
     PageConverter('errors/404.md','public').parse(permalink=False).write()
     PageConverter('errors/50x.md','public').parse(permalink=False).write()
@@ -47,3 +48,5 @@ def main():
         post.write()
     print(tags_generator.tags.keys())
 
+if __name__ == '__main__':
+    main()

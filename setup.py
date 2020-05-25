@@ -5,7 +5,13 @@ setup(
     name='fred-spieler-blog',
     version='1.0',
     py_modules=['blog'],
-    install_requires=['markdown', 'jinja2', 'mdx_linkify', 'livereload'],
+    install_requires=[
+        'jinja2',
+        'livereload',
+        'markdown',
+        'mdx_linkify',
+        'python-markdown-oembed',
+    ],
     entry_points= {
         'console_scripts': [
             'generate_blog=blog.generate_blog:main',

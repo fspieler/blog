@@ -4,7 +4,7 @@ let backgroundElements = [
 ];
 let foregroundElements = [
     "a code",
-    "a",
+    ":not(blockquote.twitter-tweet) a",
     "h3.colors",
     "p.colors strong",
 ];

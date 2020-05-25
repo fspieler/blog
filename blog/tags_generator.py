@@ -29,7 +29,7 @@ class TagsGenerator(object):
         return ret
     def write_tags_pages(self):
         for tag, val in self.tags.items():
-            tagdir = f'public/tag/{tag}'
+            tagdir = f'public/tag/{tag}/'
             os.makedirs(tagdir, exist_ok=True)
             title = f'tag: {tag}'
             tag_html = self.tag_template.render(

@@ -13,6 +13,9 @@ from markdown.extensions.toc import TocExtension
 from markdown.extensions.wikilinks import WikiLinkExtension
 from markdown import Markdown
 from mdx_linkify.mdx_linkify import LinkifyExtension
+from mdx_oembed import OEmbedExtension
+
+import oembed
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 
@@ -23,6 +26,15 @@ class PageConverter(object):
         DefListExtension(),
         FencedCodeExtension(),
         MetaExtension(),
+        OEmbedExtension(allowed_endpoints={
+            oembed.OEmbedEndpoint(
+                'https:\/\/publish.twitter.com\/oembed',
+                [
+                    "https:\/\/twitter.com\/*\/status\/*",
+                    "https:\/\/*.twitter.com\/*\/status\/*"
+                ]
+            )
+        }),
         SaneListExtension(),
 #        SmartEmphasisExtension(),
         SmartyExtension(),
@@ -84,7 +96,7 @@ class PageConverter(object):
         with open(self.input_path, 'r') as f:
             input_md = f.read()
         file_base = os.path.basename(self.input_path).replace('.md','')
-        self.output_path = f'{self.output_dir}/{file_base}'
+        self.output_path = f'{self.output_dir}/{file_base}/'
 
         self.content_html, meta = self._transform(
             input_md,
