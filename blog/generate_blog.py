@@ -11,9 +11,10 @@ def init_public():
     os.makedirs('public')
 
 def copy_static():
-    shutil.copytree('static/css','public/css')
-    shutil.copytree('static/img','public/img')
-    shutil.copytree('static/js','public/js')
+    ignore_dotfiles = lambda d, contents: [f for f in contents if f.startswith('.')]
+    shutil.copytree('static/css','public/css', ignore=ignore_dotfiles)
+    shutil.copytree('static/img','public/img', ignore=ignore_dotfiles)
+    shutil.copytree('static/js','public/js', ignore=ignore_dotfiles)
     shutil.copy2('static/robots.txt', 'public/robots.txt')
     shutil.copy2('static/referral', 'public/referral')
     shutil.copy2('static/img/favicon.ico','public/favicon.ico')
