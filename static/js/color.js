@@ -11,8 +11,6 @@ let foregroundElements = [
 let $backgroundElements = backgroundElements.map(x => $(x));
 let $foregroundElements = foregroundElements.map(x => $(x));
 
-
-
 let colorCycle = (function () {
     let starting = Math.floor(Math.random() * 628)/100.0;
     let sep = 2.094; // 2*pi/3: space out three colors
@@ -26,7 +24,7 @@ let colorCycle = (function () {
             idx = 0;
         }
         let blue = Math.floor(127+127*Math.sin(idx)).toString(16).padStart(2,'0');
-        let green = Math.floor(127+127*Math.sin(idx+sep)).toString(16).padStart(2,'0');
+        let green = Math.floor(80+80*Math.sin(idx+sep)).toString(16).padStart(2,'0');
         let red = Math.floor(127+127*Math.sin(idx+sep+sep)).toString(16).padStart(2,'0');
         let color = `#${red}${green}${blue}`;
 

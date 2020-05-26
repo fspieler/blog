@@ -80,7 +80,17 @@ window.addEventListener('popstate', function(event){
 
 function interceptLinks(){
     $('a').click(function(event){
+
         let href = $(this).attr('href');
+        let myorigin = window.location.origin;
+        let url = new URL(href, myorigin);
+        if(url.origin !== myorigin){
+            $.ajax({
+                url: myorigin+'/referral?uri='+encodeURI(url)
+            });
+            return
+        }
+
         let anchor_idx = href.indexOf('#');
         if(anchor_idx === 0){
             window.location.href = href;
