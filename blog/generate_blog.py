@@ -18,9 +18,13 @@ def copy_static():
     shutil.copy2('static/robots.txt', 'public/robots.txt')
     shutil.copy2('static/referral', 'public/referral')
     shutil.copy2('static/img/favicon.ico','public/favicon.ico')
+    PageConverter('errors/400.md','public').parse(permalink=False).write()
     PageConverter('errors/401.md','public').parse(permalink=False).write()
     PageConverter('errors/403.md','public').parse(permalink=False).write()
     PageConverter('errors/404.md','public').parse(permalink=False).write()
+    PageConverter('errors/405.md','public').parse(permalink=False).write()
+    PageConverter('errors/414.md','public').parse(permalink=False).write()
+    PageConverter('errors/418.md','public').parse(permalink=False).write()
     PageConverter('errors/50x.md','public').parse(permalink=False).write()
 
 def generate_blog_content(tags_generator, index_generator):
