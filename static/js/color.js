@@ -5,7 +5,7 @@ let backgroundElements = [
 let foregroundElements = [
     "a code",
     ":not(blockquote.twitter-tweet) a",
-    "h3.colors",
+    "span.colors",
     "p.colors strong",
 ];
 let $backgroundElements = backgroundElements.map(x => $(x));
@@ -23,9 +23,17 @@ let colorCycle = (function () {
         if(idx > 6.3){
             idx = 0;
         }
-        let blue = Math.floor(127+127*Math.sin(idx)).toString(16).padStart(2,'0');
-        let green = Math.floor(80+80*Math.sin(idx+sep)).toString(16).padStart(2,'0');
-        let red = Math.floor(127+127*Math.sin(idx+sep+sep)).toString(16).padStart(2,'0');
+        let dimming_factor = 1;
+        if(
+            // dark mode
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+        ){
+            dimming_factor = .8;
+        }
+
+        let blue = Math.floor(dimming_factor*(127+127*Math.sin(idx))).toString(16).padStart(2,'0');
+        let green = Math.floor(dimming_factor*(80+80*Math.sin(idx+sep))).toString(16).padStart(2,'0');
+        let red = Math.floor(dimming_factor*(127+127*Math.sin(idx+sep+sep))).toString(16).padStart(2,'0');
         let color = `#${red}${green}${blue}`;
 
         for(var i = 0; i < backgroundElements.length; i++){

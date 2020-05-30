@@ -44,7 +44,10 @@ document.getElementById('top').style.visibility = 'hidden';
         <div id="name-logo">
           <div id="name-logo-color">
             <a href="/">
-              <img id="name-img" src="/img/name_logo_grid_transparent.png"/>
+              <picture>
+                <source srcset="/img/name_logo_grid_transparent_dark.png" media="(prefers-color-scheme: dark)"/>
+                <img id="name-img" src="/img/name_logo_grid_transparent.png"/>
+              </picture>
             </a>
           </div>
         </div>
@@ -58,7 +61,10 @@ document.getElementById('top').style.visibility = 'hidden';
           <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
               <div>
-                <img width="100vw" src="/img/fred_logo.png" style="margin:auto;display:block"/>
+                <picture>
+                  <source srcset="/img/fred_logo_dark.png" media="(prefers-color-scheme: dark)"/>
+                  <img width="100vw" src="/img/fred_logo.png" style="margin:auto;display:block"/>
+                </picture>
               </div>
               <h4>About</h4>
               <p>Software developer employed by Bloomberg LP in NYC, USA</p>
@@ -124,6 +130,7 @@ $(document).ready(function(){
 
     <!-- Custom styles for this template -->
     <link href="/css/blog.css" rel="stylesheet">
+    <link href="/css/codehilite.css" rel="stylesheet">
     <link href="/css/tweet.css" rel="stylesheet">
 
     <!--
