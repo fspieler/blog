@@ -88,6 +88,8 @@ class PageConverter(object):
             jinja_input['tags'] = meta['tags'].split(', ')
         if 'subtitle' in meta:
             jinja_input['subtitle'] = meta['subtitle']
+        jinja_input['description'] = meta.get('description', "Fred Spieler's personal blog")
+
         content_html = self.post_template.render(**jinja_input)
         self.jinja_input = jinja_input
         return (content_html, meta)
