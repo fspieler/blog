@@ -7,6 +7,11 @@
     <meta name="keywords" content="fred,spieler,blog"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="{{ description }}"/>
+    <meta property="og:title" content="{{ title }} -- fredspieler.com"/>
+    <meta property="og:description" content="{{ description }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="https://fredspieler.com/{{ path }}"/>
+    <meta property="og:image" content="https://fredspieler.com/img/fred_logo_dark.png"/>
     <meta name="author" content="Fred Spieler"/>
     <link rel="icon" href="/favicon.ico"/>
 
@@ -110,8 +115,8 @@ document.getElementById('top').style.visibility = 'hidden';
     <!-- Latest compiled and minified CSS -->
     <link href="/css/blog.css" rel="stylesheet">
     <link href="/css/codehilite.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
+    <script src="/js/jquery.1.12.4.min.js"></script>
+    <!--script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"></script-->
     <script type="text/javascript">
 $(document).ready(function(){
   $("div#top").css("visibility", "visible");
@@ -120,13 +125,13 @@ $(document).ready(function(){
     <script type="module" src="/js/page_loader.js"></script>
     <script type="module" src="/js/color.js"></script>
     <script type="module" src="/js/navbar.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"/>
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"/>
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"></script>
 
     <!-- Custom styles for this template -->
     <link href="/css/blog.css" rel="stylesheet">
