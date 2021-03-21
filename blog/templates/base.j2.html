@@ -7,7 +7,11 @@
     <meta name="keywords" content="fred,spieler,blog"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="{{ description }}"/>
+    {% if title %}
     <meta property="og:title" content="{{ title }} -- fredspieler.com"/>
+    {% else %}
+    <meta property="og:title" content="fredspieler.com"/>
+    {% endif %}
     <meta property="og:description" content="{{ description }}"/>
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="https://fredspieler.com/{{ path }}"/>
@@ -15,7 +19,13 @@
     <meta name="author" content="Fred Spieler"/>
     <link rel="icon" href="/favicon.ico"/>
 
-    <title>{{ title }} - fredspieler.com</title>
+    <title>
+    {% if title %}
+    {{ title }} -- fredspieler.com"
+    {% else %}
+    fredspieler.com
+    {% endif %}
+    </title>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -32,16 +42,7 @@ document.getElementById('top').style.visibility = 'hidden';
       </script>
 
       <div class="blog-masthead">
-        <div class="container">
-          <nav class="blog-nav">
-            <br/>
-          <!--
-            <a class="blog-nav-item active" href="#">Latest</a>
-            <a class="blog-nav-item" href="#">By PostDate</a>
-            <a class="blog-nav-item" href="#">By Subject</a>
-          -->
-          </nav>
-        </div>
+        <br/>
       </div>
 
       <div class="container">
@@ -86,11 +87,9 @@ document.getElementById('top').style.visibility = 'hidden';
               Privacy policy: I log <a href="https://en.wikipedia.org/wiki/IP_address">IP
               address</a> and <a href="https://en.wikipedia.org/wiki/User_agent#Use_in_HTTP">user
               agent string</a>, and also when you follow external links if Javascript is enabled in your browser.</p>
-              <p>This site does use third party <a href="https://en.wikipedia.org/wiki/Content_delivery_network">CDNs</a>
-              which can track your browsing.</a>
 
-              <p>Besides that, I do not share your data with third parties for any reason.  </p>
-              <p>&copy;2019-2020 Frederic Spieler</p>
+              <p>I do not share your data with third parties for any reason.</p>
+              <p>&copy;2019-2021 Frederic Spieler</p>
             </div>
           </div><!-- /.blog-sidebar -->
 

@@ -28,12 +28,13 @@ a {
 }
 
 body {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    color: #555;
+    font-family: Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: #000;
 }
 @media (prefers-color-scheme: dark){
     body{
-        color: #dadada;
+        color: #cacaca;
         background-color: #000000;
     }
 }
@@ -171,7 +172,7 @@ h6, .h6 {
 }
 @media (prefers-color-scheme: dark) {
     .sidebar-module-inset {
-        background-color: #050505;
+        background-color: #0e0e0e;
     }
 }
 .sidebar-module-inset p:last-child,
@@ -207,7 +208,7 @@ h6, .h6 {
 }
 .blog-post-meta {
     margin-bottom: 20px;
-    color: #bbb;
+    color: #757575;
 }
 
 
@@ -225,4 +226,14 @@ h6, .h6 {
 }
 .blog-footer p:last-child {
     margin-bottom: 0;
+}
+
+hr {
+    border-top: 1px solid #666;
+}
+
+@media (prefers-color-scheme: dark) {
+    hr {
+        background-color: #eee;
+    }
 }

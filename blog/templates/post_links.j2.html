@@ -1,0 +1,11 @@
+<span>
+    {% for link in links %}
+    {% if link.active %}
+    <a href="{{ link.endpoint }}">
+    {{ link.label }}
+    </a>{% if not loop.last %} · {% endif %}
+    {% else %}
+    <span>{{ link.label }}</span>{% if not loop.last %} · {% endif %}
+    {% endif %}
+    {% endfor %}
+</span>

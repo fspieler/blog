@@ -9,7 +9,7 @@ function loadPage (name, withHistory, anchor) {
     let content_idx = name.indexOf('content.html');
     let trimmed_name = name;
     if(content_idx >= 0){
-        trimmed_name = name.substring(0, content_idx);
+        trimmed_name = name.substring(1, content_idx-1);
     }
     if(
         current_page !== trimmed_name
@@ -48,7 +48,15 @@ function pushHistory(name){
 
 function updatePage(name, data, anchor){
     let current_page = $('div.blog-post')[0].id;
-    let new_page = $.parseHTML(data)[2].id;
+    let parsed = $.parseHTML(data);
+    let new_page;
+    for(let idx in parsed){
+        let item = parsed[idx];
+        if(item.nodeName == 'DIV'){
+            new_page = item.id;
+            break;
+        }
+    }
     if(new_page != current_page){
         $("div.blog-main").fadeOut(function(){
             $("div.blog-main").empty();

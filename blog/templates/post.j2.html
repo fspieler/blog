@@ -1,20 +1,22 @@
-<div class="blog-post" id="/{{ path }}">
+{{ links_html }}
+<div class="blog-post" id="{{ endpoint }}">
     <h2 class="blog-post-title">{{ title }}</h2>
     {% if subtitle is defined %}
     <h3 class="blog-post-subtitle">{{ subtitle }}</h2>
     {% endif %}
     <p class="blog-post-meta">
-        {{ date }}
+        {{ display_date }}
         {% if permalink %}
         <a href="/{{ path }}">permalink</a>
         {% endif %}
         {% if tags is defined %}
             · tags:
             {% for tag in tags %}
-            <a href="/tag/{{ tag }}/">{{ tag }}</a>{% if not loop.last %},{% endif %}
+            <a href="/tag/{{ tag | replace(" ", "-") }}/">{{ tag }}</a>{% if not loop.last %},{% endif %}
             {% endfor %}
         {% endif %}
     </p>
     {{ body }}
     <p><a href="#">back to top</a></p>
 </div>
+{{ links_html }}

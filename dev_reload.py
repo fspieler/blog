@@ -1,16 +1,25 @@
+from os.path import exists
+import shutil
+import subprocess
+
 from livereload import Server
-from blog.generate_blog import main
+
+def build():
+    subprocess.run(['python', 'blog/build_a_blog_workshop.py'])
 
 def dev_reload():
-    main()
+    path = 'public'
+    if exists(path):
+        shutil.rmtree(path)
+    build()
     server = Server()
-    server.watch('content/**', main)
-    server.watch('static/**/*', main)
-    server.watch('blog/**/*', main)
-    server.watch('errors/**', main)
-    server.watch('*', main)
+    server.watch('content/**', build)
+    server.watch('static/**/*', build)
+    server.watch('blog/**/*', build)
+    server.watch('errors/**', build)
+    server.watch('*', build)
     server.serve(
-        root='public',
+        root=path,
         host='0.0.0.0'
     )
 

@@ -3,8 +3,8 @@
 }
 @media (prefers-color-scheme: dark){
     .codehilite .hll { background-color: #080808; }
-    .codehilite pre { background-color: #1f1f1f; color: #808080;}
-    .codehilite pre { border: 1px solid #5f5f5f; }
+    pre.codehilite { background-color: #333 !important; color: #ddd !important;}
+    pre.codehilite { border: 1px solid #5f5f5f; }
     code { background-color: #2f2f2f; }
 }
 .codehilite .c { color: #408080; font-style: italic } /* Comment */
