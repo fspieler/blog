@@ -33,7 +33,7 @@ let colorCycle = (function () {
     console.log(`Color starting index: ${starting}`);
     function colorCycleImpl(increment){
         if(increment){
-            idx += .005;
+            idx += .04;
         }
         if(idx > 6.3){
             idx = 0;
