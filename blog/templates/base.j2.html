@@ -14,14 +14,14 @@
     {% endif %}
     <meta property="og:description" content="{{ description }}"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https://fredspieler.com/{{ path }}"/>
+    <meta property="og:url" content="https://fredspieler.com/{{ endpoint }}"/>
     <meta property="og:image" content="https://fredspieler.com/img/fred_logo_dark.png"/>
     <meta name="author" content="Fred Spieler"/>
     <link rel="icon" href="/favicon.ico"/>
 
     <title>
     {% if title %}
-    {{ title }} -- fredspieler.com"
+    {{ title }} – fredspieler.com"
     {% else %}
     fredspieler.com
     {% endif %}
@@ -66,29 +66,29 @@ document.getElementById('top').style.visibility = 'hidden';
 
           <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
-              <div>
+              <div style="display:flex;justify-content:center;">
                 <picture>
                   <source srcset="/img/fred_logo_dark.png" media="(prefers-color-scheme: dark)"/>
                   <img width="100vw" src="/img/fred_logo.png" style="margin:auto;display:block"/>
                 </picture>
               </div>
               <h4>About</h4>
-              <p>Software developer employed by Bloomberg LP in NYC, USA</p>
+              <p>Software developer based in NYC, from Miami, FL</p>
               <p>Personal blog, opinions are my own, etc.</p>
               <ol class="list-unstyled">
                 <li><a href="https://github.com/fspieler">GitHub</a></li>
-                <li><a href="https://twitter.com/fspieler">Twitter</a></li>
                 <li><a href="https://linkedin.com/in/fredspieler">LinkedIn</a></li>
-                <li><a href="mailto:me@fredspieler.com">e-mail</a></li>
+                <li><a href="mailto:fred@fredspieler.com">e-mail</a></li>
               </ol>
-              <p><a href="https://github.com/fspieler/blog">This site's GitHub repo</a></p>
+              <p>Follow me on <a href="https://twitter.com/fspieler">Twitter</a> for <a href="https://twitter.com/search?q=from%3Afspieler%20%23blog">blog updates</a></p>
+              <p>This site's <a href="https://github.com/fspieler/blog">GitHub repo</a></p>
               <p>
 
               Privacy policy: I log <a href="https://en.wikipedia.org/wiki/IP_address">IP
               address</a> and <a href="https://en.wikipedia.org/wiki/User_agent#Use_in_HTTP">user
               agent string</a>, and also when you follow external links if Javascript is enabled in your browser.</p>
 
-              <p>I do not share your data with third parties for any reason.</p>
+              <p>I do not share browsing data with third parties for any reason.</p>
               <p>&copy;2019-2021 Frederic Spieler</p>
             </div>
           </div><!-- /.blog-sidebar -->
@@ -114,7 +114,7 @@ document.getElementById('top').style.visibility = 'hidden';
     <!-- Latest compiled and minified CSS -->
     <link href="/css/blog.css" rel="stylesheet">
     <link href="/css/codehilite.css" rel="stylesheet">
-    <script src="/js/jquery.1.12.4.min.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
     <!--script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"></script-->
     <script type="text/javascript">
 $(document).ready(function(){
@@ -129,8 +129,8 @@ $(document).ready(function(){
     <!-- Optional theme -->
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"/>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"></script>
+    <!-- Latest compiled and minified JavaScript
+    <script src="/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"></script> -->
 
     <!-- Custom styles for this template -->
     <link href="/css/blog.css" rel="stylesheet">
