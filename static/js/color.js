@@ -33,13 +33,13 @@ let colorCycle = (function () {
     console.log(`Color starting index: ${starting}`);
     function colorCycleImpl(increment){
         if(increment){
-            idx += .04;
+            idx += .004;
         }
         if(idx > 6.3){
             idx = 0;
         }
 
-        let offset_weight = -.0005;
+        let offset_weight = -.0006;
         for(var i = 0; i < $backgroundElements.length; i++){
             let el = $backgroundElements[i];
             let offset = el.offset().top;
@@ -60,7 +60,7 @@ let colorCycle = (function () {
     }
 
     colorCycleImpl();
-    setInterval(function(){colorCycleImpl(true)}, 500);
+    setInterval(function(){colorCycleImpl(true)}, 128);
     return function(){colorCycleImpl(false)};
 })();
 
