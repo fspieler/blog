@@ -32,7 +32,7 @@ class Post:
         if not 'endpoint' in args:
             args['endpoint'] = suggested_endpoint
         assert args['endpoint']
-        args['tags'] = [it.strip() for it in args.get('tags', '').split(',')]
+        args['tags'] = [it.strip() for it in args.get('tags', '').split(',') if it.strip()]
         if args.get('date'):
             args['date'] = date.fromisoformat(args['date'])
             args['display_date'] = args['date'].strftime('%A, %B %d, %Y').replace(' 0', ' ')
