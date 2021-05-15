@@ -14,7 +14,7 @@ setup(
     ],
     entry_points= {
         'console_scripts': [
-            'generate_blog=blog.generate_blog:main',
+            'build-a-blog=blog.build_a_blog_workshop:main',
             'dev_reload=dev_reload:dev_reload'
         ]
     }
