@@ -2,6 +2,7 @@
 <h2>{{ title }}</h1>
 {% endif %}
 <div class="blog-post" id="{{ path }}" >
+    {{ links_html }}
     {% for post in posts %}
     <span><b><a href="/{{ post.endpoint }}">
         {{ post.title }}
@@ -19,4 +20,5 @@
     <p class="blog-post-description">{{ post.description }}</p>
     <hr/>
     {% endfor %}
+    {{ links_html }}
 </div>

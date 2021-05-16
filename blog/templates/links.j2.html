@@ -1,0 +1,12 @@
+<div>
+    {% for link in links %}
+    {% if link.active %}
+    <a href="{{ link.endpoint | replace(" ", "-") }}">
+    {{- link.label -}}
+    </a>
+    {% else %}
+    <span>{{ link.label }}</span>
+    {% endif %}
+    {% if not loop.last %} · {% endif %}
+    {% endfor %}
+</div>
