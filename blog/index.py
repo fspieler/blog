@@ -61,7 +61,6 @@ class Index:
             }]
 
         assert len(links) == num_pages
-        print(links)
 
         for page_num in range(num_pages):
             page_idx = page_num * self.ENTRIES_PER_PAGE
@@ -69,7 +68,6 @@ class Index:
             if page_num != 0:
                 page_dst = path_join(dst, str(page_num+1))
                 page_dst = page_dst.replace(' ', '-')
-                print(dst, page_dst)
                 makedirs(page_dst, exist_ok=True)
 
             self.write_page(
