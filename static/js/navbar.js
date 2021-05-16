@@ -1,8 +1,0 @@
-class Navbar {
-    constructor(){
-    }
-
-    clear() {
-
-    }
-};

@@ -44,7 +44,7 @@ class Post:
         me = asdict(self)
         if links:
             me['links'] = links
-            me['links_html'] = jinja_render('post_links', **me)
+            me['links_html'] = jinja_render('links', **me)
         else:
             me['links_html'] = ''
         content_html = jinja_render('post', **me)
