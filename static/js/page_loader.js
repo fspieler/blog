@@ -66,6 +66,9 @@ function updatePage(name, data, anchor){
             updateElements();
             let title = $(".blog-post-title").text() + ' - fredspieler.com';
             document.title = title;
+            if(!anchor){
+                $("html, body").animate({ scrollTop: 0}, "fast");
+            }
             $("div.blog-main").fadeIn();
             if(anchor){
                 window.location.href = anchor;
