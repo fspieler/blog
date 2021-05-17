@@ -1,11 +1,12 @@
 @media (prefers-color-scheme: light){
     .codehilite .hll { background-color: #ffffcc }
+    code { color: #3f3f3f; background-color: #e0e0e0; }
 }
 @media (prefers-color-scheme: dark){
     .codehilite .hll { background-color: #080808; }
     pre.codehilite { background-color: #333 !important; color: #ddd !important;}
     pre.codehilite { border: 1px solid #5f5f5f; }
-    code { background-color: #2f2f2f; }
+    code { color: #e0e0e0; background-color: #3f3f3f; }
 }
 .codehilite .c { color: #408080; font-style: italic } /* Comment */
 .codehilite .err { border: 1px solid #FF0000 } /* Error */
