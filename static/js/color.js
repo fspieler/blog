@@ -13,7 +13,7 @@ let $foregroundElements = foregroundElements.map(x => $(x));
 
 function color(idx){
     let sep = 2.094;
-    let dimming_factor = 2;
+    let dimming_factor = 1;
     if(
         // dark mode
         window.matchMedia('(prefers-color-scheme: dark)').matches
