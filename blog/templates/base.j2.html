@@ -21,7 +21,7 @@
 
     <title>
     {% if title %}
-    {{ title }} – fredspieler.com"
+    {{ title }} – fredspieler.com
     {% else %}
     fredspieler.com
     {% endif %}
@@ -67,29 +67,24 @@ document.getElementById('top').style.visibility = 'hidden';
           <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
               <div style="display:flex;justify-content:center;">
-                <picture>
-                  <source srcset="/img/fred_logo_dark.png" media="(prefers-color-scheme: dark)"/>
-                  <img width="100vw" src="/img/fred_logo.png" style="margin:auto;display:block"/>
-                </picture>
+                <div id="face-logo">
+                  <div id="face-logo-color">
+                    <picture>
+                      <source srcset="/img/face-logo-dark.png" media="(prefers-color-scheme: dark)"/>
+                      <img width="100vw" src="/img/face-logo-light.png" style="margin:auto;display:block"/>
+                    </picture>
+                  </div>
+                </div>
               </div>
               <h4>About</h4>
-              <p>Software developer based in NYC, from Miami, FL</p>
+              <p>Software developer from Miami, FL</p>
               <p>Personal blog, opinions are my own, etc.</p>
-              <ol class="list-unstyled">
-                <li><a href="https://github.com/fspieler">GitHub</a></li>
-                <li><a href="https://linkedin.com/in/fredspieler">LinkedIn</a></li>
-                <li><a href="mailto:fred@fredspieler.com">e-mail</a></li>
-              </ol>
-              <p>Follow me on <a href="https://twitter.com/fspieler">Twitter</a> for <a href="https://twitter.com/search?q=from%3Afspieler%20%23blog">blog updates</a></p>
               <p>This site's <a href="https://github.com/fspieler/blog">GitHub repo</a></p>
-              <p>
-
-              Privacy policy: I log <a href="https://en.wikipedia.org/wiki/IP_address">IP
+              <p>Privacy policy: I log <a href="https://en.wikipedia.org/wiki/IP_address">IP
               address</a> and <a href="https://en.wikipedia.org/wiki/User_agent#Use_in_HTTP">user
-              agent string</a>, and also when you follow external links if Javascript is enabled in your browser.</p>
-
+              agent string</a>, and also when you follow external links if Javascript is enabled in your browser. No cookies.</p>
               <p>I do not share browsing data with third parties for any reason.</p>
-              <p>&copy;2019-2021 Frederic Spieler</p>
+              <p>&copy;2019-2024 <a href="mailto:fred@fredspieler.com">Frederic Spieler</a></p>
             </div>
           </div><!-- /.blog-sidebar -->
 

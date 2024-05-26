@@ -1,5 +1,6 @@
 let backgroundElements = [
     "div#name-logo-color",
+    "div#face-logo-color",
     "div.blog-masthead",
 ];
 let foregroundElements = [
