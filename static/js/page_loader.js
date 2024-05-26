@@ -49,14 +49,9 @@ function pushHistory(name){
 function updatePage(name, data, anchor){
     let current_page = $('div.blog-post')[0].id;
     let parsed = $.parseHTML(data);
-    let new_page;
-    for(let idx in parsed){
-        let item = parsed[idx];
-        if(item.nodeName == 'DIV'){
-            new_page = item.id;
-            break;
-        }
-    }
+    console.log(parsed);
+    let new_page = parsed[2].id
+
     if(new_page != current_page){
         $("div.blog-main").fadeOut(function(){
             $("div.blog-main").empty();
@@ -66,12 +61,11 @@ function updatePage(name, data, anchor){
             updateElements();
             let title = $(".blog-post-title").text() + ' - fredspieler.com';
             document.title = title;
-            if(!anchor){
-                $("html, body").animate({ scrollTop: 0}, "fast");
-            }
             $("div.blog-main").fadeIn();
             if(anchor){
                 window.location.href = anchor;
+            } else {
+                $(window).scrollTop(0);
             }
         });
     } else if(anchor){

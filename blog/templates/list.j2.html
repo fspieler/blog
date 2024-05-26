@@ -1,5 +1,5 @@
 {% if title %}
-<h2>{{ title }}</h1>
+<h2>{{ title }}</h2>
 {% endif %}
 <div class="blog-post" id="{{ path }}" >
     {{ links_html }}
@@ -22,3 +22,4 @@
     {% endfor %}
     {{ links_html }}
 </div>
+<div id="footer-{{ path }}"></div>

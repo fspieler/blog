@@ -1,5 +1,5 @@
 <h2 class="blog-post-title">{{ title }}</h2>
-<div class="blog-post">
+<div class="blog-post" id="tag-{{ title.replace(\" \",\"_\")}}" >
 
 <ul>
 {% for post in posts %}
