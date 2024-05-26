@@ -16,7 +16,7 @@ import oembed
 def md_render(md_text) :
     md = Markdown(extensions=[
         AttrListExtension(),
-        CodeHiliteExtension(),
+        CodeHiliteExtension(guess_lang=False),
         DefListExtension(),
         FencedCodeExtension(),
         MetaExtension(),
