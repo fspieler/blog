@@ -21,7 +21,7 @@ class Post:
 
     @classmethod
     def from_path(clz, path):
-        endpoint = basename(path).split('.')[0]+'/'
+        endpoint = basename(path).rsplit('.', 1)[0]+'/'
         with open(path, 'r') as f:
             md_text = f.read()
         return clz.from_md(md_text, endpoint)
