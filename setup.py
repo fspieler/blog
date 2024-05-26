@@ -10,6 +10,7 @@ setup(
         'livereload',
         'markdown',
         'mdx_linkify',
+        'pygments',
         'python-markdown-oembed',
     ],
     entry_points= {
