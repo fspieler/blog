@@ -1,16 +1,28 @@
-let backgroundElements = [
-    "div#name-logo-color",
-    "div#face-logo-color",
-    "div.blog-masthead",
-];
-let foregroundElements = [
-    "a code",
-    ":not(blockquote.twitter-tweet) a",
-    "span.colors",
-    "p.colors strong",
-];
-let $backgroundElements = backgroundElements.map(x => $(x));
-let $foregroundElements = foregroundElements.map(x => $(x));
+let backgroundElements = [];
+let foregroundElements = [];
+let $backgroundElements = [];
+let $foregroundElements = [];
+export function initColorElements(){
+    backgroundElements = [
+        "div#name-logo-color",
+        "div#face-logo-color",
+        "div.blog-masthead",
+    ];
+    foregroundElements = [
+        "a code",
+        ":not(blockquote.twitter-tweet) a",
+        "span.colors",
+        "p.colors strong",
+    ];
+    $backgroundElements = backgroundElements.map(x => $(x));
+    $foregroundElements = foregroundElements.map(x => $(x));
+}
+initColorElements();
+
+export function addColorBackgroundElement(element) {
+    backgroundElements.push(element);
+    $backgroundElements = backgroundElements.map(x => $(x));
+}
 
 function color(idx){
     let sep = 2.094;
@@ -27,6 +39,9 @@ function color(idx){
     return `#${red}${green}${blue}`;
 }
 
+let tick = parseInt(new URLSearchParams(window.location.search).get("colortick") ?? "128");
+let step = Number(new URLSearchParams(window.location.search).get("colorincrement") ?? ".004");
+
 let colorCycle = (function () {
     let starting = Math.floor(Math.random() * 628)/100.0;
     let sep = 2.094; // 2*pi/3: space out three colors
@@ -34,10 +49,10 @@ let colorCycle = (function () {
     console.log(`Color starting index: ${starting}`);
     function colorCycleImpl(increment){
         if(increment){
-            idx += .004;
+            idx += step;
         }
-        if(idx > 6.3){
-            idx = 0;
+        while(idx > 6.3){
+            idx -= 6.3;
         }
 
         let offset_weight = -.0006;
@@ -61,11 +76,11 @@ let colorCycle = (function () {
     }
 
     colorCycleImpl();
-    setInterval(function(){colorCycleImpl(true)}, 128);
+    setInterval(function(){colorCycleImpl(true)}, tick);
     return function(){colorCycleImpl(false)};
 })();
 
-export default function updateElements(){
+export function updateElements(){
     $backgroundElements = backgroundElements.map(x => $(x))
     $foregroundElements = foregroundElements.map(x => $(x))
     colorCycle();

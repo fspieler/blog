@@ -1,4 +1,4 @@
-import updateElements from './color.js'
+import { updateElements, initColorElements } from '/js/color.js'
 function uniqueID () {
     return Date.now().toString()+"-"+Math.random();
 }
@@ -25,6 +25,7 @@ function loadPage (name, withHistory, anchor) {
                         pushHistory(name);
                     }
                 }
+                initColorElements();
                 updatePage(trimmed_name, data, anchor);
             }
         })
@@ -49,7 +50,6 @@ function pushHistory(name){
 function updatePage(name, data, anchor){
     let current_page = $('div.blog-post')[0].id;
     let parsed = $.parseHTML(data);
-    console.log(parsed);
     let new_page = parsed[2].id
 
     if(new_page != current_page){
@@ -58,6 +58,7 @@ function updatePage(name, data, anchor){
             $("div.blog-main").toggle()
             $("div.blog-main").append(data);
             interceptLinks();
+            initColorElements();
             updateElements();
             let title = $(".blog-post-title").text() + ' - fredspieler.com';
             document.title = title;

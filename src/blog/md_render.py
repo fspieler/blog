@@ -10,8 +10,6 @@ from markdown.extensions.toc import TocExtension
 from markdown.extensions.wikilinks import WikiLinkExtension
 from markdown import Markdown
 from mdx_linkify.mdx_linkify import LinkifyExtension
-from mdx_oembed import OEmbedExtension
-import oembed
 
 def md_render(md_text) :
     md = Markdown(extensions=[
@@ -20,15 +18,6 @@ def md_render(md_text) :
         DefListExtension(),
         FencedCodeExtension(),
         MetaExtension(),
-        OEmbedExtension(allowed_endpoints={
-            oembed.OEmbedEndpoint(
-                'https:\/\/publish.twitter.com\/oembed',
-                [
-                    "https:\/\/twitter.com\/*\/status\/*",
-                    "https:\/\/*.twitter.com\/*\/status\/*"
-                ]
-            )
-        }),
         SaneListExtension(),
 #        SmartEmphasisExtension(),
         SmartyExtension(),

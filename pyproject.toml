@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blog"
+version = "0.0.1"
+dependencies = [
+    "jinja2",
+    "livereload",
+    "markdown",
+    "mdx_linkify",
+    "pygments",
+]
+
+[project.scripts]
+build-a-blog = "blog.build_a_blog_workshop:main"
+dev-reload = "blog.dev_reload:main"
+new-post = "blog.new_post:main"

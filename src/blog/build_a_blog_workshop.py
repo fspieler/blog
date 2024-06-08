@@ -64,7 +64,7 @@ def copy_static(dst='public'):
         dst,
         ignore=lambda d, files: [f for f in files if f.startswith('.')],
     )
-    for f in glob(f'errors{sep}*.md'):
+    for f in glob(f'content/errors{sep}*.md'):
         Post.from_path(f).write_files(dst)
 
 if __name__ == '__main__':
